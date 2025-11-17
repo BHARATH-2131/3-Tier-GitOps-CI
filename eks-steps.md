@@ -99,4 +99,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 ```
+### To install ArgoCD
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+###  ArgoCD initial admin password
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo

@@ -104,3 +104,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 ###  ArgoCD initial admin password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+###  choose any random string as secret value
+SECRET="devopsshack987654321"
+kubectl -n argocd patch secret argocd-secret --type merge -p \
+'{"stringData":{"webhook.github.secret":"'"$SECRET"'"}}'
